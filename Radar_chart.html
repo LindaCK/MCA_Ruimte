@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root { color-scheme: light dark; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif; margin: 0; padding: 2rem; display: grid; place-items: center; min-height: 100dvh; }
+    .wrap { width: min(900px, 92vw); }
+    canvas { max-width: 100%; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Geschiktheid per thema</h1>
+    <p>Toelichtende tekst invoeren</p>
+    <canvas id="radarChart" height="400"></canvas>
+  </div>
+
+  <!-- Chart.js via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+  // Functie om data uit URL te halen
+  function getDataFromURL(param, fallback) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const value = urlParams.get(param);
+    if (!value) return fallback;
+    return value.split(",").map(Number);
+  }
+
+  window.addEventListener('load', () => {
+    const ctx = document.getElementById('radarChart').getContext('2d');
+
+    const teamAdata = getDataFromURL("teamA", [65, 59, 90, 81, 56, 55]);
+    // const teamBdata = getDataFromURL("teamB", [28, 48, 40, 19, 96, 27]);
+
+    new Chart(ctx, {
+      type: 'radar',
+      data: {
+        labels: ['Wonen', 'Werken', 'Landbouw', 'Recreatie', 'Natuur', 'Energie'],
+        datasets: [
+          { label: 'Team A', data: teamAdata, borderWidth: 2, pointRadius: 3, fill: true }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: { display: false, text: 'Radar Chart – Dummy data via URL' },
+          legend: { position: 'top' }
+        },
+        scales: {
+          r: {
+            suggestedMin: 0,
+            suggestedMax: 100,
+            ticks: { stepSize: 20 },
+            grid: { circular: true }
+          }
+        }
+      }
+    });
+  });
+</script>
