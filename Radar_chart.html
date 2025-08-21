@@ -6,15 +6,22 @@
   <style>
     :root { color-scheme: light; }
     body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif; margin: 0; padding: 2rem; display: grid; place-items: center; min-height: 100dvh; }
-    .wrap { width: min(900px, 92vw); }
-    canvas { max-width: 100%; }
+    .wrap {
+	  width: '100%';
+	  height: '100%';
+	}
+	
+	canvas {
+	  width: '100%';
+	  height: '100%';
+	}
   </style>
 </head>
 <body>
   <div class="wrap">
 <!--     <h1>Geschiktheid per thema</h1>
     <p>Toelichtende tekst invoeren</p> -->
-    <canvas id="radarChart" height="400"></canvas>
+    <canvas id="radarChart"></canvas>
   </div>
 
   <!-- Chart.js via CDN -->
@@ -53,6 +60,7 @@
       },
       options: {
         responsive: true,
+		maintainAspectRatio: false,
         plugins: {
           legend: { display: false }
         },
@@ -73,6 +81,7 @@
   });
 
 </script>
+
 
 
 
