@@ -38,21 +38,34 @@
       data: {
         labels: ['Wonen', 'Werken', 'Landbouw'],
         datasets: [
-          { label: 'Geschiktheid', data: geschiktheid, borderWidth: 2, pointRadius: 3, fill: true }
+            { 
+							label: 'Geschiktheid', 
+							data: geschiktheid, 
+							borderWidth: 2,
+							pointRadius: 3,
+							fill: true,
+							borderColor: '#007bff',
+							backgroundColor: 'rgba(0, 123, 255, 0.2)',
+							pointBackgroundColor: '#007bff',
+							pointBorderColor: '#fff'
+          }
         ]
       },
       options: {
         responsive: true,
         plugins: {
-          title: { display: false, text: 'Radar Chart – Dummy data via URL' },
-          legend: { position: 'top' }
+          legend: { display: false }
         },
         scales: {
           r: {
             suggestedMin: 0,
             suggestedMax: 10,
-            ticks: { stepSize: 20 },
-            grid: { circular: true }
+            ticks: { stepSize: 1 },
+            grid: { circular: false },
+            pointLabels: {
+              color: "#000",
+              font: { size: 16 }
+            } 
           }
         }
       }
@@ -60,6 +73,7 @@
   });
 
 </script>
+
 
 
 
