@@ -31,14 +31,14 @@
   window.addEventListener('load', () => {
     const ctx = document.getElementById('radarChart').getContext('2d');
 
-    const teamAdata = getDataFromURL("teamA", [65, 59, 90, 81, 56, 55]);
+    const geschiktheid = getDataFromURL("geschiktheid", [6,3,8]);
 
     new Chart(ctx, {
       type: 'radar',
       data: {
-        labels: ['Wonen', 'Werken', 'Landbouw', 'Recreatie', 'Natuur', 'Energie'],
+        labels: ['Wonen', 'Werken', 'Landbouw'],
         datasets: [
-          { label: 'Team A', data: teamAdata, borderWidth: 2, pointRadius: 3, fill: true }
+          { label: 'Geschiktheid', data: geschiktheid, borderWidth: 2, pointRadius: 3, fill: true }
         ]
       },
       options: {
@@ -60,3 +60,4 @@
   });
 
 </script>
+
