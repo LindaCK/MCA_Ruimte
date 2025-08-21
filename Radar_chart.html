@@ -12,8 +12,8 @@
 </head>
 <body>
   <div class="wrap">
-    <h1>Geschiktheid per thema</h1>
-    <p>Toelichtende tekst invoeren</p>
+<!--     <h1>Geschiktheid per thema</h1>
+    <p>Toelichtende tekst invoeren</p> -->
     <canvas id="radarChart" height="400"></canvas>
   </div>
 
@@ -32,7 +32,6 @@
     const ctx = document.getElementById('radarChart').getContext('2d');
 
     const teamAdata = getDataFromURL("teamA", [65, 59, 90, 81, 56, 55]);
-    // const teamBdata = getDataFromURL("teamB", [28, 48, 40, 19, 96, 27]);
 
     new Chart(ctx, {
       type: 'radar',
@@ -59,4 +58,5 @@
       }
     });
   });
+
 </script>
